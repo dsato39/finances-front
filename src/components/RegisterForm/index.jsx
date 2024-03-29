@@ -3,6 +3,7 @@ import * as S from "./style.jsx";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import BASE_URL from "@/api/index.js";
 
 export const RegisterForm = () => {
   const router = useRouter();
@@ -28,7 +29,7 @@ export const RegisterForm = () => {
   const onSubmit = async (ev) => {
     ev.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/auth/register", {
+      const response = await axios.post(`${BASE_URL}/auth/register`, {
         name,
         email,
         cellphone,
