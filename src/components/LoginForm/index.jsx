@@ -3,6 +3,7 @@ import * as S from "./style.jsx";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import BASE_URL from "@/api/index.js";
 
 export const LoginForm = () => {
   const router = useRouter();
@@ -25,7 +26,7 @@ export const LoginForm = () => {
   const onSubmit = async (ev) => {
     ev.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/auth/login", {
+      const response = await axios.post(`${BASE_URL}/auth/login`, {
         email,
         password,
       });
