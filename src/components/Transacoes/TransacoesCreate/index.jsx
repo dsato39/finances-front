@@ -11,6 +11,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { ptBR } from "date-fns/locale";
 import { formatISO } from "date-fns";
+import BASE_URL from "@/api/index.js";
 
 export const TransacoesCreate = ({ openModal, closeModal, setUpdate }) => {
   // useState para onChange nos campos do form
@@ -69,7 +70,7 @@ export const TransacoesCreate = ({ openModal, closeModal, setUpdate }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:8080/transacoes",
+        `${BASE_URL}/transacoes`,
         {
           data: formatISO(data, { representation: "date", locale: ptBR }),
           descricao,
@@ -102,7 +103,7 @@ export const TransacoesCreate = ({ openModal, closeModal, setUpdate }) => {
     const getCategorias = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8080/categories", {
+        const response = await axios.get(`${BASE_URL}/categories`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

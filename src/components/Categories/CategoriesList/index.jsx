@@ -10,6 +10,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import CategoriesCreate from "../CategoriesCreate/index.jsx";
 import CategoriesUpdate from "../CategoriesUpdate/index.jsx";
 import CategoriesDelete from "../CategoriesDelete/index.jsx";
+import BASE_URL from "@/api/index.js";
 
 export const CategoriasList = () => {
   const [categorias, setCategorias] = useState([]);
@@ -31,7 +32,7 @@ export const CategoriasList = () => {
     const getCategorias = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8080/categories", {
+        const response = await axios.get(`${BASE_URL}/categories`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

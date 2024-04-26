@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import MetasList from "@/components/Metas/MetasList";
+import BASE_URL from "@/api/index.js";
 
 export const MetasPage = () => {
   const [user, setUser] = useState({
@@ -16,7 +17,7 @@ export const MetasPage = () => {
       window.location.href = "/login";
     }
     axios
-      .get("http://localhost:8080/users/me", {
+      .get(`${BASE_URL}/users/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

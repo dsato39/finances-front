@@ -2,6 +2,7 @@
 import * as S from "./style.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import BASE_URL from "@/api/index.js";
 
 export const TransacoesDelete = ({
   transacaoId,
@@ -35,7 +36,7 @@ export const TransacoesDelete = ({
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:8080/transacoes/${transacaoId}`,
+          `${BASE_URL}/transacoes/${transacaoId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -63,7 +64,7 @@ export const TransacoesDelete = ({
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `http://localhost:8080/transacoes/${transacaoId}`,
+        `${BASE_URL}/transacoes/${transacaoId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

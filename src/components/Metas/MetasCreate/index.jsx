@@ -11,6 +11,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { ptBR } from "date-fns/locale";
 import { formatISO } from "date-fns";
+import BASE_URL from "@/api/index.js";
 
 export const MetasCreate = ({ openModal, closeModal, setUpdate }) => {
   const [meta, setMeta] = useState();
@@ -34,7 +35,7 @@ export const MetasCreate = ({ openModal, closeModal, setUpdate }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:8080/metas",
+        `${BASE_URL}/metas`,
         {
           meta,
           prazo: formatISO(prazo, { representation: "date", locale: ptBR }),

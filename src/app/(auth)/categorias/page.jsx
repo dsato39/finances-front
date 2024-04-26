@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CategoriesList from "@/components/Categories/CategoriesList";
+import BASE_URL from "@/api/index.js";
 
 export const CategoriaPage = () => {
   const [user, setUser] = useState({
@@ -16,7 +17,7 @@ export const CategoriaPage = () => {
       window.location.href = "/login";
     }
     axios
-      .get("http://localhost:8080/users/me", {
+      .get(`${BASE_URL}/users/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

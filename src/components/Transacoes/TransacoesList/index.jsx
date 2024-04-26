@@ -10,6 +10,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import TransacoesUpdate from "../TransacoesUpdate/index.jsx";
 import TransacoesDelete from "../TransacoesDelete/index.jsx";
 import TransacoesCreate from "@/components/Transacoes/TransacoesCreate";
+import BASE_URL from "@/api/index.js";
 
 export const TransacoesList = () => {
   const [transacoes, setTransacoes] = useState([]);
@@ -33,7 +34,7 @@ export const TransacoesList = () => {
     const getTransacoes = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8080/transacoes", {
+        const response = await axios.get(`${BASE_URL}/transacoes`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -2,6 +2,7 @@
 import * as S from "./style.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import BASE_URL from "@/api/index.js";
 
 export const CategoriesUpdate = ({
   categoriaId,
@@ -34,7 +35,7 @@ export const CategoriesUpdate = ({
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:8080/categories/${categoriaId}`,
+          `${BASE_URL}/categories/${categoriaId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -61,7 +62,7 @@ export const CategoriesUpdate = ({
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `http://localhost:8080/categories/${categoriaId}`,
+        `${BASE_URL}/categories/${categoriaId}`,
         { classificacao, categoria, tipo, user_id: userId },
         {
           headers: {

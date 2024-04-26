@@ -7,6 +7,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { ptBR } from "date-fns/locale";
 import { formatISO } from "date-fns";
+import BASE_URL from "@/api/index.js";
 
 export const MetasDelete = ({
   metaId,
@@ -38,14 +39,11 @@ export const MetasDelete = ({
     const getMeta = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(
-          `http://localhost:8080/metas/${metaId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get(`${BASE_URL}/metas/${metaId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setMeta(response.data.data.meta);
         setPrazo(response.data.data.prazo);
         setValor(response.data.data.valor);
@@ -65,14 +63,11 @@ export const MetasDelete = ({
     ev.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.delete(
-        `http://localhost:8080/metas/${metaId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.delete(`${BASE_URL}/metas/${metaId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setNotification({
         open: true,
         message: `Meta excluída com sucesso!`,

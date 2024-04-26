@@ -10,6 +10,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import MetasUpdate from "../MetasUpdate/index.jsx";
 import MetasCreate from "@/components/Metas/MetasCreate";
 import MetasDelete from "../MetasDelete/index.jsx";
+import BASE_URL from "@/api/index.js";
 
 export const MetasList = () => {
   const [metas, setMetas] = useState([]);
@@ -31,7 +32,7 @@ export const MetasList = () => {
     const getMetas = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8080/metas", {
+        const response = await axios.get(`${BASE_URL}/metas`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

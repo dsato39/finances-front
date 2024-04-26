@@ -6,6 +6,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import BASE_URL from "@/api/index.js";
 
 export const CategoriesCreate = ({ openModal, closeModal, setUpdate }) => {
   const [classificacao, setClassificacao] = useState();
@@ -30,7 +31,7 @@ export const CategoriesCreate = ({ openModal, closeModal, setUpdate }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:8080/categories",
+        `${BASE_URL}/categories`,
         { classificacao, categoria, tipo },
         {
           headers: {
