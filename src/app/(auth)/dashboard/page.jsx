@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import axios from "axios";
+import BASE_URL from "@/api/index.js";
 import CategoriesCreate from "@/components/Categories/CategoriesCreate";
 import CategoriesUpdate from "@/components/Categories/CategoriesUpdate";
 import MetasCreate from "@/components/Metas/MetasCreate";
@@ -16,7 +17,7 @@ export const DashboardPage = () => {
       window.location.href = "/login";
     }
     axios
-      .get("http://localhost:8080/users/me", {
+      .get(`${BASE_URL}/users/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
